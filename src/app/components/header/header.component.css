@@ -1,0 +1,14 @@
+.header {
+  height: 100px;
+  border-radius: 50px 50px 0 0;
+  background-color: #383e59;
+  display: flex;
+  align-items: center;
+}
+.header h1 {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  margin-left: 50px;
+  line-height: 26.4px;
+}
