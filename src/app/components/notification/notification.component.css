@@ -1,0 +1,21 @@
+.notification {
+  height: 150px;
+  background-color: #fafafa;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.notification h2 {
+  color: #ffadad;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 26px;
+}
+.notification p {
+  color: #383e59;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+}
