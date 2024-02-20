@@ -1,0 +1,61 @@
+.button {
+  background-color: #383e59;
+  border: none;
+  border-radius: 22.5px;
+  width: 210px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px 0;
+}
+.button svg {
+  color: #fff;
+  margin-right: 10px;
+  margin-bottom: -2px;
+}
+.new-task {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  gap: 40px;
+}
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.add-task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.add-task h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #383e59;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+.input-container input {
+  border: none;
+  background-color: #fafafa;
+  border-radius: 50px;
+  height: 40px;
+  width: 500px;
+  padding-left: 10px;
+}
+.input-container label {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #383e59;
+  padding-left: 10px;
+}

@@ -4,17 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NotificationComponent
+    NotificationComponent,
+    AddTaskComponent,
+    CustomDropdownComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
