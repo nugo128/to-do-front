@@ -4,4 +4,26 @@ main {
   margin: 50px 60px;
   border-radius: 50px;
   background-color: #ffffff;
+  padding-bottom: 40px;
+}
+.current-tasks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  max-width: 52%;
+}
+.current {
+  display: flex;
+  gap: 10px;
+}
+.finished-tasks {
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.status {
+  font-size: 18px;
+  font-weight: 600;
 }

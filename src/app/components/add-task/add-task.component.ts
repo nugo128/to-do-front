@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-add-task',
@@ -11,7 +11,8 @@ export class AddTaskComponent {
 
   onOptionSelected(option: string): void {
     this.selectedOption =
-      option === 'მიმდინარე სტატუსი' ? 'current' : 'finished';
+      option === 'მიმდინარე სტატუსი' ? 'მიმდინარე' : 'დასრულებული';
     console.log(this.selectedOption);
   }
+  @Input() taskExists = '';
 }

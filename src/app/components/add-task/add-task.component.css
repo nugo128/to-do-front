@@ -59,3 +59,12 @@ form {
   color: #383e59;
   padding-left: 10px;
 }
+.with-tasks {
+  flex-direction: row;
+  align-items: center;
+  gap: 160px;
+  padding: 50px;
+}
+.with-tasks input {
+  width: 600px;
+}

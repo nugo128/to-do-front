@@ -7,6 +7,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TaskComponent } from './components/task/task.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     NotificationComponent,
     AddTaskComponent,
     CustomDropdownComponent,
+    TaskComponent,
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [],

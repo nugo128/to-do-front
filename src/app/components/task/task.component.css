@@ -1,0 +1,35 @@
+.tasks {
+  display: flex;
+  background-color: #fafafa;
+  padding: 20px 50px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+h2 {
+  width: 600px;
+}
+.buttons {
+  display: flex;
+  width: 40%;
+  justify-content: end;
+  gap: 10px;
+}
+.name {
+  font-size: 16px;
+  font-weight: 400;
+}
+.status {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+}
+.delete {
+  padding: 10px 40px;
+  border-radius: 22.5px;
+  border: none;
+  background-color: #ffadad;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
