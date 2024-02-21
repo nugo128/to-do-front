@@ -10,7 +10,8 @@ export class AddTaskComponent {
   selectedOption: string = '';
 
   onOptionSelected(option: string): void {
-    this.selectedOption = option;
+    this.selectedOption =
+      option === 'მიმდინარე სტატუსი' ? 'current' : 'finished';
     console.log(this.selectedOption);
   }
 }

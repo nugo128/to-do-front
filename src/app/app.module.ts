@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { CustomDropdownComponent } from './components/custom-dropdown/custom-dro
     AddTaskComponent,
     CustomDropdownComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
