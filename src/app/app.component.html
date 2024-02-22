@@ -13,7 +13,7 @@
     <h2 class="status">სტატუსი</h2>
 </div>
 <ng-container *ngFor="let task of tasks">
-    <app-task *ngIf="task.status === 'მიმდინარე'" [name]="task.name" [status]="task.status"></app-task>
+    <app-task *ngIf="task.status === 'მიმდინარე'" [name]="task.name" [status]="task.status" [id]="task.id" (taskDeleted)="deleteTask($event)"></app-task>
 </ng-container>
 <div class="finished-tasks" *ngIf="tasks?.length">
 
@@ -26,7 +26,7 @@
 
 </div>
 <ng-container *ngFor="let task of tasks">
-    <app-task *ngIf="task.status === 'დასრულებული'" [name]="task.name" [status]="task.status"></app-task>
+    <app-task *ngIf="task.status === 'დასრულებული'" [name]="task.name" [id]="task.id" [status]="task.status" (taskDeleted)="deleteTask($event)"></app-task>
 </ng-container>
 
 </main>

@@ -15,4 +15,7 @@ export class TaskService {
   addTasks(data: ITask) {
     return this.http.post(`${BASE_API_URL}/Task`, data);
   }
+  deleteTask(id: number) {
+    return this.http.delete(`${BASE_API_URL}/Task/${id}`);
+  }
 }

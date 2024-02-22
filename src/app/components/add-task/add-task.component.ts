@@ -32,12 +32,15 @@ export class AddTaskComponent implements OnInit {
     this.form.value.status = this.selectedOption;
     console.log(this.form.value);
     if (this.form.value.name && this.form.value.status) {
-      this.taskService
-        .addTasks(this.form.value)
-        .subscribe((response: ITask) => {
+      this.taskService.addTasks(this.form.value).subscribe(
+        (response: ITask) => {
           this.responseReceived.emit(response);
           console.log(response);
-        });
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     }
   }
 }

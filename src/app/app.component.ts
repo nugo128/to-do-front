@@ -13,13 +13,26 @@ export class AppComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((data) => {
-      console.log(data);
-      this.tasks = data;
-    });
+    this.taskService.getTasks().subscribe(
+      (data) => {
+        console.log(data);
+        this.tasks = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
+  deleteTask(id: number) {
+    console.log(id, 'hehe');
+    const indexToDelete = this.tasks.findIndex((obj: ITask) => obj.id === id);
+
+    if (indexToDelete !== -1) {
+      this.tasks.splice(indexToDelete, 1);
+    }
+  }
   handleResponse(response: ITask) {
-    this.tasks.unshift(response);
+    this.tasks.push(response);
   }
 }
