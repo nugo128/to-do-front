@@ -8,6 +8,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskComponent } from './components/task/task.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { TaskComponent } from './components/task/task.component';
     CustomDropdownComponent,
     TaskComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

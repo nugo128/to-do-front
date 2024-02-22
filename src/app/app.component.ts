@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from './services/task.service';
+import { ITask } from './models/task';
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,9 @@ export class AppComponent implements OnInit {
       console.log(data);
       this.tasks = data;
     });
+  }
+
+  handleResponse(response: ITask) {
+    this.tasks.unshift(response);
   }
 }

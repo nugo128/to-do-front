@@ -1,7 +1,7 @@
 <main class="main">
 <app-header></app-header>
 <app-notification *ngIf="!tasks?.length"></app-notification>
-<app-add-task [taskExists]="tasks?.length"></app-add-task>
+<app-add-task [taskExists]="tasks?.length" (responseReceived)="handleResponse($event)"></app-add-task>
 <div class="current-tasks" *ngIf="tasks?.length">
     <div class="current">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

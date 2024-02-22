@@ -5,10 +5,10 @@
             </svg>
 <h2>ახალი დავალების დამატება</h2>            
     </div>
-    <form action="">
+    <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="input-container">
             <label for="name">შეიყვანეთ დასახელება</label>
-            <input type="text">
+            <input type="text" formControlName="name">
         </div>
         <app-custom-dropdown [options]="dropdownOptions" (optionSelected)="onOptionSelected($event)"></app-custom-dropdown>
 
