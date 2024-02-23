@@ -15,6 +15,7 @@ import {
 export class CustomDropdownComponent implements OnChanges {
   @Input() options: string[] = [];
   @Input() submitted: boolean = false;
+  @Input() reset: boolean = false;
   @Input() placeholderValue: string = '';
   @Output() optionSelected = new EventEmitter<string>();
   selectedOption: string = '';
@@ -35,6 +36,12 @@ export class CustomDropdownComponent implements OnChanges {
         this.selectedOption = 'მიმდინარე სტატუსი';
       } else if (this.placeholderValue === 'დასრულებული') {
         this.selectedOption = 'დასრულებული სტატუსი';
+      }
+    }
+    if (changes.reset) {
+      if (!this.reset) {
+        this.isDropdownOpen = false;
+        this.selectedOption = '';
       }
     }
   }

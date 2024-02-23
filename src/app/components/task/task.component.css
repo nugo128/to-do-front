@@ -21,6 +21,7 @@ h2 {
 .name {
   font-size: 16px;
   font-weight: 400;
+  word-wrap: break-word;
 }
 .status {
   font-size: 18px;

@@ -19,9 +19,13 @@
             <ng-template #changeName>
                 <label for="name">შეცვალეთ დასახელება</label>
             </ng-template>
-            <input type="text" formControlName="name" [value]="taskToEdit?.name">
+            <input  type="text" formControlName="name" [value]="taskToEdit?.name">
+            <p class="error-message">{{!nameValid ? 'სახელი სავალდებულოა' :''}}</p>
         </div>
-        <app-custom-dropdown [options]="dropdownOptions" [submitted]="submitted" (optionSelected)="onOptionSelected($event)" [placeholderValue]="taskToEdit?.status"></app-custom-dropdown>
+        <div class="dropdown">
+            <app-custom-dropdown [options]="dropdownOptions" [submitted]="submitted" (optionSelected)="onOptionSelected($event)" [placeholderValue]="taskToEdit?.status" [reset]="resetStatus"></app-custom-dropdown>
+            <p class="error-message">{{!optionValid ? 'სტატუსი სავალდებულოა' : ''}}</p>
+        </div>
 
 
         <button *ngIf="!edit; else editButton" type="submit" class="button"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

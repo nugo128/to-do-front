@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { ITask } from '../../models/task';
@@ -8,16 +16,20 @@ import { ITask } from '../../models/task';
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
 })
-export class AddTaskComponent implements OnInit {
+export class AddTaskComponent implements OnInit, OnChanges {
   public dropdownOptions: string[] = [
     'მიმდინარე სტატუსი',
     'დასრულებული სტატუსი',
   ];
   public selectedOption: string = '';
   public submitted: boolean = false;
+  public nameValid: boolean = true;
+  public optionValid: boolean = true;
+  public resetStatus: boolean = false;
   @Input() taskExists = '';
   @Input() edit: boolean = false;
   @Input() taskToEdit: any;
+
   form: FormGroup;
   @Output() responseReceived: EventEmitter<any> = new EventEmitter<any>();
   @Output() editTask: EventEmitter<any> = new EventEmitter<any>();
@@ -31,25 +43,41 @@ export class AddTaskComponent implements OnInit {
     });
   }
   onOptionSelected(option: string): void {
-    this.selectedOption =
-      option === 'მიმდინარე სტატუსი' ? 'მიმდინარე' : 'დასრულებული';
-    console.log(this.selectedOption);
+    if (option === 'მიმდინარე სტატუსი') {
+      this.selectedOption = 'მიმდინარე';
+    } else if (option === 'დასრულებული სტატუსი') {
+      this.selectedOption = 'დასრულებული';
+    }
     this.form.value.status = this.selectedOption;
   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.edit) {
+      if (this.edit === false) {
+        this.resetStatus = false;
+      } else {
+        this.nameValid = true;
+        this.optionValid = true;
+        this.resetStatus = true;
+      }
+    }
+  }
   onSubmit() {
+    this.nameValid = this.form.value.name;
     this.submitted = false;
     if (!this.edit) {
       this.form.value.status = this.selectedOption;
-      console.log(this.form.value);
+      this.optionValid = this.form.value.status;
       if (this.form.value.name && this.form.value.status) {
+        this.nameValid = true;
+        this.optionValid = true;
         this.taskService.addTasks(this.form.value).subscribe(
           (response: ITask) => {
             this.responseReceived.emit(response);
-            console.log(response);
             this.submitted = true;
             this.form.reset({
               id: 0,
             });
+            this.selectedOption = null;
           },
           (error) => {
             console.error(error);
@@ -57,7 +85,6 @@ export class AddTaskComponent implements OnInit {
         );
       }
     } else {
-      console.log(123123);
       if (!this.form.value.name) {
         this.form.value.name = this.taskToEdit.name;
       }
@@ -65,17 +92,18 @@ export class AddTaskComponent implements OnInit {
         this.form.value.status = this.taskToEdit.status;
       }
       this.form.value.id = this.taskToEdit.id;
-      console.log(this.form.value);
 
       this.taskService
         .editTask(this.taskToEdit.id, this.form.value)
         .subscribe((response) => {
-          console.log('success');
+          this.nameValid = true;
+          this.optionValid = true;
           this.editTask.emit(this.form.value);
           this.submitted = true;
           this.form.reset({
             id: 0,
           });
+          this.selectedOption = null;
         });
     }
   }

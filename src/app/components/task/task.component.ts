@@ -31,7 +31,6 @@ export class TaskComponent {
   deleteTask(id: number): void {
     this.taskService.deleteTask(id).subscribe(
       () => {
-        console.log('Task deleted successfully');
         this.taskDeleted.emit(id);
       },
       (error) => {
@@ -43,6 +42,5 @@ export class TaskComponent {
   editTask(id: number): void {
     this.editingService.setActiveTaskId(this.edittingMode ? null : id);
     this.taskEditted.emit({ id, edit: this.edittingMode });
-    console.log(id);
   }
 }

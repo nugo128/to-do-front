@@ -13,12 +13,14 @@ export class AppComponent implements OnInit {
   public tasks: any;
   public taskToEdit: number;
   public edittingMode: boolean = false;
-  constructor(private taskService: TaskService, private editingService: EditingService) {}
+  constructor(
+    private taskService: TaskService,
+    private editingService: EditingService
+  ) {}
 
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(
       (data) => {
-        console.log(data);
         this.tasks = data;
       },
       (error) => {
@@ -28,7 +30,6 @@ export class AppComponent implements OnInit {
   }
 
   deleteTask(id: number) {
-    console.log(id, 'hehe');
     const indexToDelete = this.tasks.findIndex((obj: ITask) => obj.id === id);
 
     if (indexToDelete !== -1) {
@@ -39,15 +40,17 @@ export class AppComponent implements OnInit {
     const index = this.tasks.findIndex((obj: ITask) => obj.id === data.id);
     this.taskToEdit = this.tasks[index];
     this.edittingMode = data.edit;
-    console.log(this.taskToEdit);
-    console.log(data);
+
+    if (!this.edittingMode) {
+      this.taskToEdit = null;
+    }
   }
   editTaskData(data: ITask) {
     const index = this.tasks.findIndex((obj: ITask) => obj.id === data.id);
     this.tasks[index] = data;
     this.edittingMode = false;
     this.taskToEdit = null;
-    this.editingService.setActiveTaskId(null)
+    this.editingService.setActiveTaskId(null);
   }
   handleResponse(response: ITask) {
     this.tasks.push(response);
