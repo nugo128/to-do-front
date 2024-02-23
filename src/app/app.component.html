@@ -1,7 +1,7 @@
 <main class="main">
 <app-header></app-header>
 <app-notification *ngIf="!tasks?.length"></app-notification>
-<app-add-task [taskExists]="tasks?.length" (responseReceived)="handleResponse($event)"></app-add-task>
+<app-add-task [taskExists]="tasks?.length" (responseReceived)="handleResponse($event)" [edit]="edittingMode" [taskToEdit]="taskToEdit" (editTask)="editTaskData($event)"></app-add-task>
 <div class="current-tasks" *ngIf="tasks?.length">
     <div class="current">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +13,7 @@
     <h2 class="status">სტატუსი</h2>
 </div>
 <ng-container *ngFor="let task of tasks">
-    <app-task *ngIf="task.status === 'მიმდინარე'" [name]="task.name" [status]="task.status" [id]="task.id" (taskDeleted)="deleteTask($event)"></app-task>
+    <app-task *ngIf="task.status === 'მიმდინარე'" [name]="task.name" [status]="task.status" [id]="task.id" (taskDeleted)="deleteTask($event)" (taskEditted)="editTask($event)" ></app-task>
 </ng-container>
 <div class="finished-tasks" *ngIf="tasks?.length">
 
@@ -26,7 +26,7 @@
 
 </div>
 <ng-container *ngFor="let task of tasks">
-    <app-task *ngIf="task.status === 'დასრულებული'" [name]="task.name" [id]="task.id" [status]="task.status" (taskDeleted)="deleteTask($event)"></app-task>
+    <app-task *ngIf="task.status === 'დასრულებული'" [name]="task.name" [status]="task.status" [id]="task.id" (taskDeleted)="deleteTask($event)" (taskEditted)="editTask($event)" ></app-task>
 </ng-container>
 
 </main>

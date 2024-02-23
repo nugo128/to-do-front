@@ -9,6 +9,7 @@ import { CustomDropdownComponent } from './components/custom-dropdown/custom-dro
 import { HttpClientModule } from '@angular/common/http';
 import { TaskComponent } from './components/task/task.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditingService } from './services/editting.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TaskComponent,
   ],
   imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
-  providers: [],
+  providers: [EditingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

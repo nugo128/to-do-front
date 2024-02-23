@@ -18,4 +18,7 @@ export class TaskService {
   deleteTask(id: number) {
     return this.http.delete(`${BASE_API_URL}/Task/${id}`);
   }
+  editTask(id: number, data: any) {
+    return this.http.put(`${BASE_API_URL}/Task/${id}`, data);
+  }
 }
